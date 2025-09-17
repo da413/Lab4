@@ -25,9 +25,16 @@ public class CameraFollowPlayer : MonoBehaviour
 
         
         vCam = GetComponent<CinemachineVirtualCamera>();
-       
-       
-        vCam.Follow = target;
+
+        if (target != null)
+        {
+            vCam.Follow = target;
+        }
+        else
+        {
+            return;
+        }
+        
         
     }
 }
