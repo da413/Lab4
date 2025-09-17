@@ -9,14 +9,15 @@ public class GameManager : MonoBehaviour
     public GameObject meteorPrefab;
     public GameObject bigMeteorPrefab;
     public bool gameOver = false;
-
+    public float repeatingSpawnTime = 2f;
+    public float initSpawnTime = 1f;
     public int meteorCount = 0;
 
     // Start is called before the first frame update
     void Start()
     {
         Instantiate(playerPrefab, transform.position, Quaternion.identity);
-        InvokeRepeating("SpawnMeteor", 1f, 2f);
+        InvokeRepeating("SpawnMeteor", initSpawnTime, repeatingSpawnTime);
     }
 
     // Update is called once per frame
@@ -40,12 +41,12 @@ public class GameManager : MonoBehaviour
 
     void SpawnMeteor()
     {
-        Instantiate(meteorPrefab, new Vector3(Random.Range(-8, 8), 7.5f, 0), Quaternion.identity);
+        Instantiate(meteorPrefab, new Vector3(Random.Range(-5, 5), 7.5f, 0), Quaternion.identity);
     }
 
     void BigMeteor()
     {
         meteorCount = 0;
-        Instantiate(bigMeteorPrefab, new Vector3(Random.Range(-8, 8), 7.5f, 0), Quaternion.identity);
+        Instantiate(bigMeteorPrefab, new Vector3(Random.Range(-5, 5), 7.5f, 0), Quaternion.identity);
     }
 }
