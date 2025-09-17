@@ -29,8 +29,13 @@ public class Player : MonoBehaviour
 
     void Movement()
     {
-        /*
-        transform.Translate(new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0) * Time.deltaTime * speed);
+        
+       // transform.Translate(new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0) * Time.deltaTime * speed);
+        
+
+        Vector2 moveValue = move.ReadValue<Vector2>();
+        transform.Translate(moveValue * speed * Time.deltaTime);
+
         if (transform.position.x > horizontalScreenLimit || transform.position.x <= -horizontalScreenLimit)
         {
             transform.position = new Vector3(transform.position.x * -1f, transform.position.y, 0);
@@ -39,10 +44,7 @@ public class Player : MonoBehaviour
         {
             transform.position = new Vector3(transform.position.x, transform.position.y * -1, 0);
         }
-        */
-
-        Vector2 moveValue = move.ReadValue<Vector2>();
-        transform.Translate(moveValue * speed * Time.deltaTime);
+        
     }
 
     void Shooting()
