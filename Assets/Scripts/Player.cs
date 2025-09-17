@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
@@ -11,10 +12,12 @@ public class Player : MonoBehaviour
     private float verticalScreenLimit = 6f;
     private bool canShoot = true;
 
+    InputAction move;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        move = InputSystem.actions.FindAction("Move");
     }
 
     // Update is called once per frame
@@ -26,6 +29,7 @@ public class Player : MonoBehaviour
 
     void Movement()
     {
+        /*
         transform.Translate(new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0) * Time.deltaTime * speed);
         if (transform.position.x > horizontalScreenLimit || transform.position.x <= -horizontalScreenLimit)
         {
@@ -35,6 +39,10 @@ public class Player : MonoBehaviour
         {
             transform.position = new Vector3(transform.position.x, transform.position.y * -1, 0);
         }
+        */
+
+        Vector2 moveValue = move.ReadValue<Vector2>();
+        transform.Translate(moveValue * speed * Time.deltaTime);
     }
 
     void Shooting()
