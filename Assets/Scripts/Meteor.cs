@@ -9,6 +9,8 @@ public class Meteor : MonoBehaviour
     public float orbitSpeedMultiplier = 0.5f;
     private float orbitAngle;
 
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,19 +22,24 @@ public class Meteor : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector3 directionToPlayer = player.transform.position - transform.position;
-        float distanceToPlayer = directionToPlayer.magnitude;
+        if (player != null)
+        {
+            Vector3 directionToPlayer = player.transform.position - transform.position;
+            float distanceToPlayer = directionToPlayer.magnitude;
 
-        float orbitSpeed = baseOrbitSpeed + distanceToPlayer * orbitSpeedMultiplier;
-        orbitAngle += orbitSpeed * Time.deltaTime;
+         float orbitSpeed = baseOrbitSpeed + distanceToPlayer * orbitSpeedMultiplier;
+            orbitAngle += orbitSpeed * Time.deltaTime;
 
-        Vector3 orbitOffset = new Vector3(Mathf.Cos(orbitAngle), Mathf.Sin(orbitAngle), 0f) * distanceToPlayer;
-        transform.position = player.transform.position + orbitOffset;
+            Vector3 orbitOffset = new Vector3(Mathf.Cos(orbitAngle), Mathf.Sin(orbitAngle), 0f) * distanceToPlayer;
+            transform.position = player.transform.position + orbitOffset;
 
-        float targetAngle = Mathf.Atan2(directionToPlayer.x, directionToPlayer.y) * Mathf.Rad2Deg;
-        Vector3 currentRotation = transform.eulerAngles;
-        currentRotation.z += Mathf.DeltaAngle(currentRotation.z, targetAngle - 90f);
-        transform.eulerAngles = currentRotation;
+            float targetAngle = Mathf.Atan2(directionToPlayer.x, directionToPlayer.y) * Mathf.Rad2Deg;
+         Vector3 currentRotation = transform.eulerAngles;
+            currentRotation.z += Mathf.DeltaAngle(currentRotation.z, targetAngle - 90f);
+            transform.eulerAngles = currentRotation;
+        }
+        
+        
 
         if (transform.position.y < -11f)
         {
