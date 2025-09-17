@@ -161,3 +161,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 147004292113bf34cba36a179026f4ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 7158442464957206486, guid: 78da5bc7391e681469a6daeeda50dc41, type: 3}
+  baseOrbitSpeed: 0.1
+  orbitSpeedMultiplier: 0.2
