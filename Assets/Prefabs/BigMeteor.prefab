@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2748223895716869258}
   m_Layer: 0
   m_Name: BigMeteor
-  m_TagString: Untagged
+  m_TagString: Big Meteor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -164,3 +164,4 @@ MonoBehaviour:
   player: {fileID: 7158442464957206486, guid: 78da5bc7391e681469a6daeeda50dc41, type: 3}
   baseOrbitSpeed: 0.1
   orbitSpeedMultiplier: 0.2
+  health: 5

@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -8594480066010780705}
   m_Layer: 0
   m_Name: Meteor
-  m_TagString: Untagged
+  m_TagString: Meteor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -164,4 +164,4 @@ MonoBehaviour:
   player: {fileID: 7158442464957206486, guid: 78da5bc7391e681469a6daeeda50dc41, type: 3}
   baseOrbitSpeed: 0.1
   orbitSpeedMultiplier: 0.2
-  minOrbitDistance: 0
+  health: 1

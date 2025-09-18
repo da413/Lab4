@@ -2,11 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BigMeteor : Meteor
+public interface IDamageable
 {
-    void Awake()
-    {
-        health = 5;
-    }
-
+    void TakeDamage (int damage);
 }
