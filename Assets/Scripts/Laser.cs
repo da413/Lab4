@@ -9,7 +9,7 @@ public class Laser : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -20,6 +20,16 @@ public class Laser : MonoBehaviour
         if (transform.position.y > destroyLimit)
         {
             Destroy(this.gameObject);
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        IDamageable damageable = collision.GetComponent<IDamageable>();
+        if (damageable != null)
+        {
+            damageable.TakeDamage(1);
+            Destroy(gameObject);
         }
     }
 }
