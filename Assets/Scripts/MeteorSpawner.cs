@@ -12,6 +12,7 @@ public class MeteorSpawner : MonoBehaviour
     public int meteorCount = 0;
 
      public UnityEvent onMeteorDestroyed;
+     public UnityEvent onBigMeteorSpawned;
 
     // Start is called before the first frame update
     void Start()
@@ -27,6 +28,7 @@ public class MeteorSpawner : MonoBehaviour
         if (meteorCount % 5 == 0)
         {
             SpawnBigMeteor();
+            onBigMeteorSpawned.Invoke();
         }
     }
 

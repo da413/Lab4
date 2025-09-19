@@ -9,8 +9,9 @@ public class CameraFollowPlayer : MonoBehaviour
     Transform target;
     CinemachineVirtualCamera vCam;
 
-    
-    
+    Coroutine myCoroutine;
+    float lerpedValue;
+    float duration = 3;
     
 
     
@@ -42,7 +43,9 @@ public class CameraFollowPlayer : MonoBehaviour
 
     public void CameraZoomOut()
     {
-
+        
+        myCoroutine = StartCoroutine(Lerp(60,100));
+             
     }
 
     public void CameraShake()
@@ -57,6 +60,21 @@ public class CameraFollowPlayer : MonoBehaviour
     {
         yield return new WaitForSeconds(time);
         vCam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>().m_AmplitudeGain = 0;
+    }
+
+    IEnumerator Lerp(float start, float end)
+    {
+        float timeElasped = 0;
+
+        while(timeElasped < duration)
+        {
+            float t = timeElasped/duration;
+            vCam.m_Lens.FieldOfView = Mathf.Lerp(start,end,t);
+            timeElasped += Time.deltaTime;
+            yield return null;
+        }
+
+        vCam.m_Lens.FieldOfView = end;
     }
 
 }
