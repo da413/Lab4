@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Meteor : MonoBehaviour, IDamageable
 {
@@ -11,6 +12,8 @@ public class Meteor : MonoBehaviour, IDamageable
     public int health = 1;
     private MeteorSpawner meteorSpawner;
 
+   
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,6 +23,9 @@ public class Meteor : MonoBehaviour, IDamageable
         orbitAngle = Mathf.Atan2(offset.z, offset.x);
     }
 
+    
+
+    
     // Update is called once per frame
     void Update()
     {
@@ -68,6 +74,11 @@ public class Meteor : MonoBehaviour, IDamageable
         {
             Destroy(gameObject);
             meteorSpawner.RegisterMeteorDestroyed();
+           
+            
         }
     }
+
+    
+
 }

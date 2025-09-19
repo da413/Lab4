@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class MeteorSpawner : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class MeteorSpawner : MonoBehaviour
     public float repeatingSpawnTime = 2f;
     public float initSpawnTime = 1f;
     public int meteorCount = 0;
+
+     public UnityEvent onMeteorDestroyed;
 
     // Start is called before the first frame update
     void Start()
@@ -34,6 +37,7 @@ public class MeteorSpawner : MonoBehaviour
 
     public void RegisterMeteorDestroyed()
     {
+        onMeteorDestroyed.Invoke();
         meteorCount--;
     }
 

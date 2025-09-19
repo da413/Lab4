@@ -8,10 +8,12 @@ public class CameraFollowPlayer : MonoBehaviour
     GameObject player;
     Transform target;
     CinemachineVirtualCamera vCam;
-    void Start()
-    {
-        
-    }
+
+    
+    
+    
+
+    
 
     // Update is called once per frame
     void Update()
@@ -37,4 +39,24 @@ public class CameraFollowPlayer : MonoBehaviour
         
         
     }
+
+    public void CameraZoomOut()
+    {
+
+    }
+
+    public void CameraShake()
+    {
+        
+        vCam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>().m_AmplitudeGain = 3;
+        StartCoroutine(StopCameraShake(2));
+        
+    }
+
+    private IEnumerator StopCameraShake(float time)
+    {
+        yield return new WaitForSeconds(time);
+        vCam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>().m_AmplitudeGain = 0;
+    }
+
 }
