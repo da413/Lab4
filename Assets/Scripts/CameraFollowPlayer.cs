@@ -44,7 +44,7 @@ public class CameraFollowPlayer : MonoBehaviour
     public void CameraZoomOut()
     {
         
-        myCoroutine = StartCoroutine(Lerp(60,100));
+        myCoroutine = StartCoroutine(Lerp(60,80));
              
     }
 
